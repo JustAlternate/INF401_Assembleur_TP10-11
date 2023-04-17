@@ -37,7 +37,7 @@ main:
          @ appel de la procedure map(tab1, NMAX, tab2, plus_un)
 
 	 LDR r0, LD_tab1
-	 MOV r1, #10           @ NMAX dans r2
+	 MOV r1, #NMAX           @ NMAX dans r2
 	 LDR r2, LD_tab2
 	 LDR r3, LD_plus_un
  
@@ -51,7 +51,8 @@ main:
 	 pop {r1}
 
 	 push {r0}
-	 MOV r0, r2
+	 ldr r0, LD_tab2
+	 mov r1, #NMAX
 	 bl afficher_tab
 	 pop {r0}
 
