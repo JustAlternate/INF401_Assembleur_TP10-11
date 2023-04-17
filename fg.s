@@ -37,7 +37,5 @@ somme:   add      r2, r0, r1
 @ r0, r1 : donnees
 @ r2 : resultat
 
-         @@@@@@@@@@@@@
-         @ A COMPLETER
-         @@@@@@@@@@@@@
-	
+mult:	mul r2, r0, r1
+	bx lr
