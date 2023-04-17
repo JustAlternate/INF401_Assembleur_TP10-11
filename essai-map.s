@@ -50,9 +50,7 @@ main:
          bl       AlaLigne
          ldr      r1, LD_afftab2
          bl       EcrChaine    @ On ecrit la chaine de caractere afftab2
-	 pop {r1}              @ On rerecup le r1 dans lequel il y avait tab1
 
-	 push {r1}
 	 MOV r1, r2
 	 bl afficher_tab
 	 pop {r1}
