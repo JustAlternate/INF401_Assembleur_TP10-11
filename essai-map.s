@@ -56,6 +56,7 @@ main:
 	 MOV r1, r2
 	 bl afficher_tab
 	 pop {r1}
+	 pop {lr}
 
          @ appel de la procedure map(tab1, NMAX, tab2, carre)
          @@@@@@@@@@@@@
