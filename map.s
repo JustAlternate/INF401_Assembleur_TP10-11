@@ -11,15 +11,17 @@
          .text
          .global  map
 map:
-		push {r0, r1, r2, r3, r4, r5, r6, lr}
+		push {lr}
+		push {r0, r1, r2, r3, r4, r5, r6}
 		mov r5, #0					@ i <- 0
 while_map:	cmp r5, r1					@ tant que i != n
 		beq fin_while_map
 		mov r6, r3					@ r6 = *f
 		ldr r3, [r0, r5]				@ r3 = t1[i]
-		bx r6						@ r4 = f(t1[i])
+		blx r6						@ r4 = f(t1[i])
 		str r4, [r2, r5]				@ t2[i] <- f(t1[i])
 		add r5, r5, #1					@ i <- i + 1
 		b while_map
-fin_while_map:	pop {r0, r1, r2, r3, r4, r5, r6, lr}
+fin_while_map:	pop {r0, r1, r2, r3, r4, r5, r6}
+		pop {lr}
 		bx lr
