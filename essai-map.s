@@ -32,18 +32,30 @@ main:
          mov      r1, #NMAX
          bl       afficher_tab
 
-         @ appel de la procedure map(tab1, NMAX, tab2, plus_un)
-         @@@@@@@@@@@@@
-         @ A COMPLETER
-         @@@@@@@@@@@@@
 
+
+         @ appel de la procedure map(tab1, NMAX, tab2, plus_un)
+
+	 push {lr}
+	 LDR r1, LD_tab1
+	 MOV r2, #10           @ NMAX dans r2
+	 LDR r2, LD_tab2
+	 LDR r3, LD_plus_un
+	 MOV r4, #0            @ par defaut le resultat est 0.
+ 
+	 bl map                @ On appelle la fonction map
+
+	 push {r1}             @ On stocke r1 pour afficher notre afftab2 sans overwrite sur r1
          @ afficher la sequence resultat
          bl       AlaLigne
          ldr      r1, LD_afftab2
-         bl       EcrChaine
-         @@@@@@@@@@@@@
-         @ A COMPLETER
-         @@@@@@@@@@@@@
+         bl       EcrChaine    @ On ecrit la chaine de caractere afftab2
+	 pop {r1}              @ On rerecup le r1 dans lequel il y avait tab1
+
+	 push {r1}
+	 MOV r1, r2
+	 bl afficher_tab
+	 pop {r1}
 
          @ appel de la procedure map(tab1, NMAX, tab2, carre)
          @@@@@@@@@@@@@
