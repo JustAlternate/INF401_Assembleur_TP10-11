@@ -32,17 +32,18 @@ main:
          bl       afficher_tab
 
          @ appel de la fonction red(tab, NMAX, 0, somme)
-         @@@@@@@@@@@@@
-         @ A COMPLETER
-         @@@@@@@@@@@@@
+	 ldr r0, LD_tab
+	 mov r1, #NMAX
+	 mov r2, #0
+	 ldr r3, LD_somme
+	 bl red
 
          @ afficher le resultat
          bl       AlaLigne
          ldr      r1, LD_affres1
          bl       EcrChn
-         @@@@@@@@@@@@@
-         @ A COMPLETER
-         @@@@@@@@@@@@@
+	 mov r1, r4
+	 bl EcrZdecimal32
 
          @ fin du programme principal
          pop      {lr}           @ restauration adresse de retour

@@ -3,7 +3,7 @@ AS=/opt/gnu/arm/bin/arm-eabi-gcc
 
 CFLAGS=-Wall -gdwarf-2
 
-all: essai-map
+all: essai-map essai-red
 
 clean:
 	/bin/rm -rf *.o image_bits_include.h image_bits_content.c
@@ -23,5 +23,15 @@ fg.o:	fg.s
 essai-map.o: essai-map.s
 	${CC} ${CFLAGS} -c $< -o $@
 
+red.o: red.s
+	${CC} ${CFLAGS} -c $< -o $@
+
+essai-red.o: essai-red.s
+	${CC} ${CFLAGS} -c $< -o $@
+
 essai-map: essai-map.o map.o es.o gestion_tab.o fg.o
 	${CC} ${CFLAGS} -o $@ $^
+
+essai-red: essai-red.o red.o es.o gestion_tab.o fg.o
+	${CC} ${CFLAGS} -o $@ $^
+
