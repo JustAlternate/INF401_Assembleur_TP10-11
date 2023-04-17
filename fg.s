@@ -19,7 +19,7 @@ carre:
          mov      r0, r3
          mov      r1, r3
          bl       mult
-         mov      r4, r0
+         mov      r4, r2
 
          pop      {r2}           @ restauration temporaires
          pop      {r1}
@@ -36,6 +36,6 @@ somme:   add      r2, r0, r1
 @ fonction produit : multiplie les deux entiers passes en parametre
 @ r0, r1 : donnees
 @ r2 : resultat
-
-mult:	mul r2, r0, r1
+mult:	
+	mul r2, r0, r1
 	bx lr
