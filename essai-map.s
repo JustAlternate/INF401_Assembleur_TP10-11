@@ -38,9 +38,8 @@ main:
 
 	 LDR r1, LD_tab1
 	 MOV r2, #10           @ NMAX dans r2
-	 LDR r2, LD_tab2
-	 LDR r3, LD_plus_un
-	 MOV r4, #0            @ par defaut le resultat est 0.
+	 LDR r3, LD_tab2
+	 LDR r4, LD_plus_un
  
 	 bl map                @ On appelle la fonction map
 
