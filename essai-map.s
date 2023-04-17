@@ -36,10 +36,10 @@ main:
 
          @ appel de la procedure map(tab1, NMAX, tab2, plus_un)
 
-	 LDR r1, LD_tab1
-	 MOV r2, #10           @ NMAX dans r2
-	 LDR r3, LD_tab2
-	 LDR r4, LD_plus_un
+	 LDR r0, LD_tab1
+	 MOV r1, #10           @ NMAX dans r2
+	 LDR r2, LD_tab2
+	 LDR r3, LD_plus_un
  
 	 bl map                @ On appelle la fonction map
 
@@ -48,10 +48,12 @@ main:
          bl       AlaLigne
          ldr      r1, LD_afftab2
          bl       EcrChaine    @ On ecrit la chaine de caractere afftab2
-
-	 MOV r1, r2
-	 bl afficher_tab
 	 pop {r1}
+
+	 push {r0}
+	 MOV r0, r2
+	 bl afficher_tab
+	 pop {r0}
 
          @ appel de la procedure map(tab1, NMAX, tab2, carre)
          @@@@@@@@@@@@@
