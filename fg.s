@@ -1,5 +1,5 @@
          .global plus_un, carre
-         .global somme, produit
+         .global somme, mult
          .text
 @ fonction plus_un : incremente l'entier passe en parametre
 @ r3 : donnee
@@ -37,5 +37,5 @@ somme:   add      r2, r0, r1
 @ r0, r1 : donnees
 @ r2 : resultat
 mult:	
-	mul r2, r0, r1
-	bx lr
+       	 mul	  r2, r0, r1
+	 bx	  lr
