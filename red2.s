@@ -18,10 +18,10 @@ red:
 	push {r0, r1, r2, r3, r4, r5, r6}	@ Sauvegarde des registres dans la pile
 
 	@ On récupère les arguments de la fonction
-	ldr r0, [fp, #12]	@ r3 : adresse de la fonction g
-	ldr r1, [fp, #16]	@ r2 : valeur initiale
-	ldr r2, [fp, #20]	@ r1 : taille n de la séquence
-	ldr r3, [fp, #24]	@ r0 : début du tableau
+	ldr r3, [fp, #12]	@ r3 : adresse de la fonction g
+	ldr r2, [fp, #16]	@ r2 : valeur initiale
+	ldr r1, [fp, #20]	@ r1 : taille n de la séquence
+	ldr r0, [fp, #24]	@ r0 : début du tableau
 	
 if_red: cmp r1, #0		@ si red == 0
 	bne sinon_red

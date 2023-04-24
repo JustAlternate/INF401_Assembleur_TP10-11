@@ -38,8 +38,13 @@ main:
 	 mov r1, #NMAX
 	 mov r2, #0
 	 ldr r3, LD_somme
-	 push {r0, r1, r2, r3}
+	 push {r0}
+	 push {r1}
+	 push {r2}
+	 push {r3}
+	 sub sp, sp, #4
 	 bl red                                              @ oui, on appelle red2 , les apparences peuvent etre trompeuse.
+	 pop {r4}
 	 pop {r0, r1, r2, r3}
 
          @ afficher le resultat
