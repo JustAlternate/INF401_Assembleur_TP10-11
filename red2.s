@@ -12,7 +12,7 @@
 	.global red
 
 red:
-	add sp, sp, #4		@ On laisse un espace pour la valeur de retour
+	sub sp, sp, #4		@ On laisse un espace pour la valeur de retour
 	push {lr, fp}		@ On enregistre l'adresse de retour et l'ancien fp
 	mov fp, sp		@ On enregistre le sommet actuel de la pile pour récupérer les paramètres
 	push {r0, r1, r2, r3, r4, r5, r6}	@ Sauvegarde des registres dans la pile
@@ -27,8 +27,10 @@ if_red: cmp n, #0		@ si red == 0
 	bne sinon_red
 	str r2, [fp, #8]	@ On enregistre la valeur initiale à l'endroit réservé dans la pile pour la valeur de retour
 	b fin_if_red
-else_red:
+sinon_red:
 	push {r0, r1, r2}	@ On calcule g(init, mem[tab])
+	mov r0, r2
+	ldrb r1, [r0]
 	blx r3
 	mov r4, r2		@ r4 = g(init, mem[tab])
 	pop {r0, r1, r2}
