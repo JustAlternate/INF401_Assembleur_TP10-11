@@ -5,8 +5,10 @@ invite1: .asciz   "Saisir une sequence de "
 invite2: .asciz   " entiers :"
 afftab:  .asciz   "Sequence donnee S :"
 affres1: .asciz   "red(S, somme) = "
+affres2: .asciz   "red(S, mult) = "
 tab :    .skip    NMAX           @ tableau de NMAX octets
 var_somme:   .word    0
+var_mult:    .word    1
 
          .text
          .global  main
@@ -45,6 +47,22 @@ main:
 	 mov r1, r4
 	 bl EcrZdecimal32
 
+	 @ appel de la fonction red(tab, NMAX, 1, mult)
+	 ldr r0, LD_tab
+	 mov r1, #NMAX
+	 mov r2, #1
+	 ldr r3, LD_mult
+	 bl red
+
+         @ afficher le resultat
+         bl       AlaLigne
+         ldr      r1, LD_affres2
+         bl       EcrChn
+	 mov r1, r4
+	 bl EcrZdecimal32
+
+
+
          @ fin du programme principal
          pop      {lr}           @ restauration adresse de retour
          bx       lr             @ retour a l'appelant
@@ -58,11 +76,17 @@ LD_afftab:
          .word    afftab
 LD_affres1:
          .word    affres1
+LD_affres2:
+	 .word	  affres2
 LD_tab:
          .word    tab
 LD_var_somme:
          .word    var_somme
+LD_var_mult:
+	 .word	  var_mult
 
 @ relais vers la zone text
 LD_somme:
 	 .word    somme
+LD_mult:
+	 .word	  mult
