@@ -39,7 +39,7 @@ main:
 	 mov r2, #0
 	 ldr r3, LD_somme
 	 push {r0, r1, r2, r3}
-	 bl red2
+	 bl red                                              @ oui, on appelle red2 , les apparences peuvent etre trompeuse.
 	 pop {r0, r1, r2, r3}
 
          @ afficher le resultat

@@ -22,7 +22,7 @@ red:
 	ldr r1, [fp, #20]	@ r1 : taille n de la séquence
 	ldr r0, [fp, #24]	@ r0 : début du tableau
 	
-if_red: cmp n, #0		@ si red == 0
+if_red: cmp r1, #0		@ si red == 0
 	bne sinon_red
 	str r2, [fp, #8]	@ On enregistre la valeur initiale à l'endroit réservé dans la pile pour la valeur de retour
 	b fin_if_red
