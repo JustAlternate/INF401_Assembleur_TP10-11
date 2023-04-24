@@ -12,7 +12,8 @@
 	.global red
 
 red:
-	push {lr, fp}		@ On enregistre l'adresse de retour et l'ancien fp
+	push {lr}		@ On enregistre l'adresse de retour et l'ancien fp
+	push {fp}
 	mov fp, sp		@ On enregistre le sommet actuel de la pile pour récupérer les paramètres
 	push {r0, r1, r2, r3, r4, r5, r6}	@ Sauvegarde des registres dans la pile
 
@@ -47,7 +48,8 @@ sinon_red:
 	str r2, [fp, #8]	
 fin_if_red:
 	pop {r0, r1, r2, r3, r4, r5, r6}
-	pop {lr, fp}
+	pop {fp}
+	pop {lr}
 	bx lr
 
 
