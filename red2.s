@@ -12,7 +12,6 @@
 	.global red
 
 red:
-	sub sp, sp, #4		@ On laisse un espace pour la valeur de retour
 	push {lr, fp}		@ On enregistre l'adresse de retour et l'ancien fp
 	mov fp, sp		@ On enregistre le sommet actuel de la pile pour récupérer les paramètres
 	push {r0, r1, r2, r3, r4, r5, r6}	@ Sauvegarde des registres dans la pile
@@ -40,10 +39,11 @@ sinon_red:
 	push {r6}
 	push {r4}
 	push {r3}
+	sub sp, sp, #4		@ On laisse un espace pour la valeur de retour
 	ldr r1, LD_red
 	blx r1			@ appel récursif
-	add sp, sp, #16
 	pop {r2}
+	add sp, sp, #16
 	str r2, [fp, #8]	
 fin_if_red:
 	pop {r0, r1, r2, r3, r4, r5, r6}
