@@ -1,7 +1,30 @@
-@ fonction red
-@ parametres : A COMPLETER
-@ algorithme : A COMPLETER
-@ allocation des registres : A COMPLETER
+@fonction red   
+
+@parametres : 
+@- t : l'adresse d'un TabEnt8 
+@- n : taille de la sequence en EntN
+@- vi : valeur initiale en Ent8
+@- g : la fonction passé en FoncRedEnt8
+
+@algorithme :
+
+@red(t, n, vi, g) :
+@  i : entier du type EntN
+@  acc : entier du type Ent32
+@  i <- 0
+@  acc <- vi
+@  tant que i != n
+@    acc <- g(acc, t[i])
+@    i <- i + 1
+@  retour acc
+
+@allocation des registres : 
+
+@- t dans r0
+@- n dans r1
+@- vi dans r2
+@- g dans r3
+@- res dans r4
 
          .text
          .global  red
